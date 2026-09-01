@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cqc4ugjmlphif"]
+
+[ext_resource type="Script" uid="uid://dg0tgnhwhtn6i" path="res://scripts/object_bin_crystal_interaction.gd" id="1_oe8au"]
+[ext_resource type="ArrayMesh" uid="uid://bxua151o5grnh" path="res://models/crystal_bin.obj" id="1_vveb2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_80psr"]
+height = 1.2655029
+radius = 0.5415039
+
+[node name="ObjectBinBlue" type="Node3D" unique_id=149589118]
+
+[node name="StaticBody3D" type="Area3D" parent="." unique_id=1743209249 node_paths=PackedStringArray("notification_label", "http_request")]
+collision_mask = 5
+script = ExtResource("1_oe8au")
+target_group = "blue_crystal"
+popup_message = "Achievement: Blue Crystal Deposited!"
+notification_label = NodePath("../Label3D")
+http_request = NodePath("../APIClient")
+achievement_name = "Blue Crystal Master"
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=895973506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.089538574, 0)
+shape = SubResource("CylinderShape3D_80psr")
+
+[node name="CrystalBin" type="MeshInstance3D" parent="StaticBody3D" unique_id=793358736]
+mesh = ExtResource("1_vveb2")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=533075718]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.145394, 0)
+
+[node name="APIClient" type="HTTPRequest" parent="." unique_id=694188767]

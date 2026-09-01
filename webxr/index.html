@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExploreWebVR - Panel Użytkownika</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="card" id="auth-container">
+        <h2>ExploreWebVR</h2>
+        <div id="form-box">
+            <input type="text" id="username" placeholder="Login">
+            <input type="password" id="password" placeholder="Hasło">
+            <button onclick="register()">Zarejestruj się</button>
+            <button onclick="login()" style="background: #2196F3;">Zaloguj się</button>
+            <p class="msg" id="msg"></p>
+        </div>
+    </div>
+
+    <div class="card hidden" id="dashboard-container">
+        <h2>Witaj, <span id="user-display"></span>!</h2>
+        <p>Status sesji: <b>Aktywna</b></p>
+        <hr style="border-color: #444;">
+        <h3>Twoje Osiągnięcia</h3>
+        <ul id="achievements-list">
+            <li>Brak zdobytych osiągnięć</li>
+        </ul>
+        <button onclick="launchVR()" style="background: #FF9800;">Uruchom Grę VR</button>
+        <button onclick="logout()" style="background: #f44336; margin-top: 10px;">Wyloguj</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

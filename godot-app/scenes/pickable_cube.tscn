@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://etcg3l7kpst0"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_ghk0n"]
+[ext_resource type="Texture2D" uid="uid://ddha4kcv14nsw" path="res://models/enviroment_brick_wall.png" id="2_l0wi5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qe8ww"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_12u7y"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_heiie"]
+albedo_texture = ExtResource("2_l0wi5")
+
+[node name="PickableObject" unique_id=935268310 instance=ExtResource("1_ghk0n")]
+collision_layer = 8
+collision_mask = 196623
+picked_up_layer = 65540
+second_hand_grab = 1
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_qe8ww")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1" unique_id=1943273704]
+mesh = SubResource("BoxMesh_12u7y")
+surface_material_override/0 = SubResource("StandardMaterial3D_heiie")

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://c081phlmdckrn"]
+
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="1_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_fjrip"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="4_smehm"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_ur7pv"]
+
+[node name="Player" type="Node3D" unique_id=1609494884]
+
+[node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=601948720]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=545457274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8000001, 0)
+
+[node name="LeftController" type="XRController3D" parent="XROrigin3D" unique_id=658889402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0)
+tracker = &"left_hand"
+pose = &"grip"
+
+[node name="LeftHand" parent="XROrigin3D/LeftController" unique_id=1601272807 instance=ExtResource("1_qlg0r")]
+
+[node name="MovementDirect" parent="XROrigin3D/LeftController" unique_id=231300748 groups=["player_body"] instance=ExtResource("2_tuyoq")]
+strafe = true
+input_action = "thumbstick"
+
+[node name="FunctionPickup" parent="XROrigin3D/LeftController" unique_id=86635475 instance=ExtResource("3_tuyoq")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="RightController" type="XRController3D" parent="XROrigin3D" unique_id=1256540878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
+tracker = &"right_hand"
+pose = &"grip"
+
+[node name="RightHand" parent="XROrigin3D/RightController" unique_id=1295428092 instance=ExtResource("3_fjrip")]
+
+[node name="MovementDirect" parent="XROrigin3D/RightController" unique_id=1031323007 instance=ExtResource("2_tuyoq")]
+input_action = "thumbstick"
+
+[node name="MovementTurn" parent="XROrigin3D/RightController" unique_id=1758428428 instance=ExtResource("4_smehm")]
+input_action = "thumbstick"
+
+[node name="FunctionPickup" parent="XROrigin3D/RightController" unique_id=696593591 instance=ExtResource("3_tuyoq")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="PlayerBody" parent="XROrigin3D" unique_id=378405842 instance=ExtResource("5_ur7pv")]

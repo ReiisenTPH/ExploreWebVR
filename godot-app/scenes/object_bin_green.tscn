@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cpf8xmnath248"]
+
+[ext_resource type="Script" uid="uid://dg0tgnhwhtn6i" path="res://scripts/object_bin_crystal_interaction.gd" id="1_4c1hb"]
+[ext_resource type="ArrayMesh" uid="uid://bxua151o5grnh" path="res://models/crystal_bin.obj" id="1_ti1ec"]
+[ext_resource type="Texture2D" uid="uid://dxl6iff41kjc8" path="res://models/lava_green.png" id="2_kiskp"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kiskp"]
+height = 1.2655029
+radius = 0.5415039
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c1hb"]
+albedo_texture = ExtResource("2_kiskp")
+texture_filter = 0
+
+[node name="ObjectBinGreen" type="Node3D" unique_id=149589118]
+
+[node name="StaticBody3D" type="Area3D" parent="." unique_id=1065303643 node_paths=PackedStringArray("notification_label", "http_request")]
+collision_mask = 5
+script = ExtResource("1_4c1hb")
+target_group = "green_crystal"
+popup_message = "Achievement: Green Crystal Deposited!"
+notification_label = NodePath("../Label3D")
+http_request = NodePath("../APIClient")
+achievement_name = "Green Crystal Master"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1517824077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.089538574, 0)
+shape = SubResource("CylinderShape3D_kiskp")
+
+[node name="CrystalBin" type="MeshInstance3D" parent="StaticBody3D" unique_id=793358736]
+mesh = ExtResource("1_ti1ec")
+surface_material_override/1 = SubResource("StandardMaterial3D_4c1hb")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=884669670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.145394, 0)
+
+[node name="APIClient" type="HTTPRequest" parent="." unique_id=735047924]

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ccdybrc6p02x3"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_iflaa"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="2_3mil0"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_xfi1j"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_jbbse"]
+[ext_resource type="ArrayMesh" uid="uid://1vxt1rvd4fb0" path="res://models/crystal_green.obj" id="5_y132a"]
+[ext_resource type="Texture2D" uid="uid://mn7hiro6dm33" path="res://models/crystal_blue.png" id="6_iflaa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lp7lc"]
+size = Vector3(0.2, 0.6174652, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bafr"]
+albedo_texture = ExtResource("6_iflaa")
+texture_filter = 0
+
+[node name="Item_Crystal_Red" unique_id=585308066 groups=["blue_crystal"] instance=ExtResource("1_iflaa")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21792817, 0)
+shape = SubResource("BoxShape3D_lp7lc")
+
+[node name="HighlightRing" parent="." index="1" unique_id=1358511052 instance=ExtResource("2_3mil0")]
+
+[node name="GrabPointHandLeft" parent="." index="2" unique_id=1056045301 instance=ExtResource("3_xfi1j")]
+
+[node name="GrabPointHandRight" parent="." index="3" unique_id=1968409106 instance=ExtResource("4_jbbse")]
+
+[node name="CrystalBlue" type="MeshInstance3D" parent="." index="4" unique_id=1098356023]
+mesh = ExtResource("5_y132a")
+surface_material_override/0 = SubResource("StandardMaterial3D_3bafr")
